@@ -1,0 +1,27 @@
+# =============================================================================
+# Example regional configuration: Indian Ocean operational domain
+# Copy this file (e.g. to arabian_sea_domain.yaml) and adjust bounds/defaults
+# to stand up a new regional instance without touching application code.
+# =============================================================================
+
+domain:
+  id: "indian_ocean"
+  name: "Indian Ocean (INCOIS operational domain)"
+  bbox: { west: 30.0, south: -10.0, east: 100.0, north: 30.0 }
+  depth_range_m: [0, 2000]
+  default_camera:
+    longitude: 72.5
+    latitude: 12.0
+    height_m: 4500000
+  default_time_window_days: 10
+  vertical_exaggeration_default: 40
+  vertical_exaggeration_max: 200
+
+featured_regions:
+  - { name: "Arabian Sea", bbox: { west: 50, south: 8, east: 78, north: 25 } }
+  - { name: "Bay of Bengal", bbox: { west: 78, south: 5, east: 100, north: 23 } }
+  - { name: "Lakshadweep Sea", bbox: { west: 70, south: 6, east: 78, north: 14 } }
+  - { name: "Equatorial Indian Ocean", bbox: { west: 45, south: -10, east: 100, north: 5 } }
+
+argo_float_density_hint: "~450 active floats basin-wide (RAMA + core Argo)"
+glider_deployment_hint: "INCOIS + NIOT seasonal glider missions, Arabian Sea & BoB"

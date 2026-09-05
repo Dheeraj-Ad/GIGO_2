@@ -1,0 +1,7 @@
+id,type,latitude,longitude,depth,temperature,salinity,pressure,chlorophyll,humidity,basin,status,battery,current_direction,current_speed
+ARGO-1403,ARGO,18.40,66.80,680,28.60,35.20,686.2,0.54,74,Arabian Sea,Active,94,245,0.18
+ARGO-1408,ARGO,13.20,88.40,420,29.30,33.70,425.1,1.12,81,Bay of Bengal,Active,96,82,0.16
+GLIDER-1401,GLIDER,21.00,72.60,1500,27.90,35.80,460.3,0.42,78,Arabian Sea,Active,88,260,0.22
+GLIDER-1402,GLIDER,15.40,80.80,310,29.10,34.10,313.2,0.94,76,Bay of Bengal,Active,86,95,0.19
+GLIDER-1407,GLIDER,7.80,74.20,180,28.20,35.00,181.8,0.68,80,Central Indian Ocean,Active,84,210,0.14
+GLIDER-1410,GLIDER,1.60,82.60,520,27.60,34.80,527.4,0.76,79,Central Indian Ocean,Active,90,125,0.12

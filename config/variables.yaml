@@ -1,0 +1,129 @@
+# =============================================================================
+# Variable Registry — CF-Convention aware
+# Each variable maps loosely-named source fields to one canonical name used
+# throughout the API and frontend, so "thetao" (Copernicus), "temp" (Argo),
+# and "sst" (LAS) all resolve to the same UI entry: "temperature".
+# =============================================================================
+
+variables:
+
+  temperature:
+    label: "Temperature"
+    units: "°C"
+    cf_standard_name: "sea_water_temperature"
+    aliases:
+      incois_las: sst
+      copernicus_glorys: thetao
+      argo_gdac: temp
+      glider_ego_gdac: temperature
+      incois_odis_moorings: sea_water_temperature
+      incois_odis_ctd: sea_water_temperature
+    default_range: [-2, 32]
+    default_colormap: "thermal"
+    log_scale: false
+
+  salinity:
+    label: "Salinity"
+    units: "PSU"
+    cf_standard_name: "sea_water_salinity"
+    aliases:
+      incois_las: salinity
+      copernicus_glorys: so
+      argo_gdac: psal
+      glider_ego_gdac: salinity
+      incois_odis_moorings: sea_water_practical_salinity
+      incois_odis_ctd: sea_water_practical_salinity
+    default_range: [30, 38]
+    default_colormap: "haline"
+    log_scale: false
+
+  current_speed:
+    label: "Current Speed"
+    units: "m/s"
+    cf_standard_name: "sea_water_speed"
+    derived_from: ["current_u", "current_v"]
+    aliases: { incois_las: [currents_u, currents_v], copernicus_glorys: [uo, vo] }
+    default_range: [0, 1.5]
+    default_colormap: "speed"
+    log_scale: false
+
+  # Alias of current_speed under the plain name 'currents' -- added because
+  # a connected frontend (incois-3d-vdas) requests variable=currents for
+  # its CURRENTS layer toggle rather than the more precise 'current_speed'.
+  # Kept as a separate entry (not a rename) so existing API consumers that
+  # already use 'current_speed' are unaffected.
+  currents:
+    label: "Currents"
+    units: "m/s"
+    cf_standard_name: "sea_water_speed"
+    derived_from: ["current_u", "current_v"]
+    aliases: { incois_las: [currents_u, currents_v], copernicus_glorys: [uo, vo] }
+    default_range: [0, 1.5]
+    default_colormap: "speed"
+    log_scale: false
+
+  current_u:
+    label: "Eastward Current"
+    units: "m/s"
+    cf_standard_name: "eastward_sea_water_velocity"
+    aliases: { incois_las: currents_u, copernicus_glorys: uo }
+    default_range: [-1.5, 1.5]
+    default_colormap: "balance"
+    log_scale: false
+
+  current_v:
+    label: "Northward Current"
+    units: "m/s"
+    cf_standard_name: "northward_sea_water_velocity"
+    aliases: { incois_las: currents_v, copernicus_glorys: vo }
+    default_range: [-1.5, 1.5]
+    default_colormap: "balance"
+    log_scale: false
+
+  ssh:
+    label: "Sea Surface Height"
+    units: "m"
+    cf_standard_name: "sea_surface_height_above_geoid"
+    aliases: { incois_las: ssh, copernicus_glorys: zos }
+    default_range: [-1, 1]
+    default_colormap: "balance"
+    log_scale: false
+
+  mld:
+    label: "Mixed Layer Depth"
+    units: "m"
+    cf_standard_name: "ocean_mixed_layer_thickness"
+    aliases: { incois_las: mld, copernicus_glorys: mlotst }
+    default_range: [0, 150]
+    default_colormap: "deep"
+    log_scale: false
+
+  chlorophyll:
+    label: "Chlorophyll-a"
+    units: "mg/m³"
+    cf_standard_name: "mass_concentration_of_chlorophyll_a_in_sea_water"
+    aliases: { argo_gdac: chla, glider_ego_gdac: chlorophyll }
+    default_range: [0.01, 10]
+    default_colormap: "algae"
+    log_scale: true
+
+  dissolved_oxygen:
+    label: "Dissolved Oxygen"
+    units: "µmol/kg"
+    cf_standard_name: "mole_concentration_of_dissolved_molecular_oxygen_in_sea_water"
+    aliases:
+      argo_gdac: doxy
+      glider_ego_gdac: oxygen
+      incois_odis_ctd: mass_concentration_of_oxygen_in_sea_water
+    default_range: [0, 300]
+    default_colormap: "oxy"
+    log_scale: false
+
+  backscatter:
+    label: "Optical Backscatter (700 nm)"
+    units: "m⁻¹ sr⁻¹"
+    cf_standard_name: "volume_scattering_function_of_radiative_flux_in_sea_water"
+    aliases: { glider_ego_gdac: backscatter }
+    default_range: [0.0001, 0.01]
+    default_colormap: "deep"
+    log_scale: true
