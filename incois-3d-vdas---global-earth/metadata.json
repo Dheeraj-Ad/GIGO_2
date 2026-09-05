@@ -1,6 +1,0 @@
-{
-  "name": "INCOIS 3D-VDAS - Global Earth",
-  "description": "Indian National Centre for Ocean Information Services 3D ocean data visualization and telemetry architecture system featuring global earth monitoring, bathymetry, in-situ sensor networks, and satellite altimetry.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
